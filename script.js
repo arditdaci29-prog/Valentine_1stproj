@@ -23,5 +23,17 @@ function handleNoClick() {
 }
 
 function handleYesClick() {
-    window.location.href = "yes_page.html";
+  fetch("https://hooks.zapier.com/hooks/catch/26398747/ue8y1tv/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      action: "clicked_oui",
+      time: new Date().toISOString()
+    })
+  }).catch(() => {});
+
+  window.location.href = "yes_page.html";
 }
+
