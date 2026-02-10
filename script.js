@@ -23,17 +23,19 @@ function handleNoClick() {
 }
 
 function handleYesClick() {
-  fetch("https://hooks.zapier.com/hooks/catch/26398747/ue8y1tv/", {
+  fetch("https://hooks.zapier.com/hooks/catch/XXXX/YYYY/", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       action: "clicked_oui",
       time: new Date().toISOString()
-    })
+    }),
+    keepalive: true   // 🔥 THIS IS THE KEY
   }).catch(() => {});
 
-  window.location.href = "yes_page.html";
+  setTimeout(() => {
+    window.location.href = "yes_page.html";
+  }, 300);
 }
+
 
